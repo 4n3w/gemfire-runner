@@ -5,8 +5,6 @@ source common.bash
 INSTANCE_NAME=${1:-"gemfire1"}
 LOCATOR_PORT=${2:-"10334"}
 JMX_MANAGER_PORT="1099"
-LOG_DIR="./logs"
-WORKING_DIR="./data"
 
 # Console specific configuration
 JAVA_MIN_HEAP="512m"

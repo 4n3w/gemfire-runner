@@ -4,6 +4,7 @@ source common.bash
 
 # Function to log in to pivnet and download GemFire files
 download_gemfire_management_console() {
+    cd $GEMFIRE_PATH
     pivnet login --api-token="$TANZU_TOKEN"
     pivnet accept-eula -p gemfire-management-console -r 1.3.0
     pivnet download-product-files -p gemfire-management-console -r 1.3.0 -d $GEMFIRE_PATH -i $(pivnet product-files -p gemfire-management-console -r 1.3.0 | awk '/gemfire-management-console-1.3.0.jar/{print $2}')
@@ -28,7 +29,7 @@ trap cleanup SIGINT SIGTERM
 if [ ! -f "$CONSOLE_JAR" ]; then
     check_pivnet_cli
     check_tanzu_token
-    create_workspace_directories
+    create_directories
     download_gemfire_management_console
 fi
 

@@ -15,6 +15,7 @@ HEAP_SIZE="1G"
 
 LOG_DIR="./logs"
 WORKING_DIR="./data"
+PG_WORKING_DIR="./data/pg"
 
 MAX_WAIT=10  # Maximum seconds to wait for graceful shutdown
 
@@ -35,9 +36,16 @@ check_tanzu_token() {
 }
 
 # Function to create workspace directories
-create_workspace_directories() {
+create_directories() {
     if [ ! -d "$GEMFIRE_PATH" ]; then
         mkdir -p $GEMFIRE_PATH
     fi
-    cd $GEMFIRE_PATH
+
+    if [ ! -d "$LOG_DIR" ]; then
+        mkdir -p $LOG_DIR
+    fi
+
+    if [ ! -d "$WORKING_DIR" ]; then
+        mkdir -p $WORKING_DIR
+    fi
 }

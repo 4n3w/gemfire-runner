@@ -4,6 +4,7 @@ source common.bash
 
 # Function to log in to pivnet and download GemFire files
 download_gemfire() {
+    cd $GEMFIRE_PATH
     pivnet login --api-token="$TANZU_TOKEN"
     pivnet accept-eula -p pivotal-gemfire -r 10.1.2
     pivnet download-product-files -p pivotal-gemfire -r 10.1.2 -d $GEMFIRE_PATH -i $(pivnet product-files -p pivotal-gemfire -r 10.1.2 | awk '/vmware-gemfire-10.1.2.tgz/{print $2}') 
@@ -36,7 +37,7 @@ trap cleanup SIGINT SIGTERM EXIT
 if [ ! -f "$GEMFIRE_HOME/bin/gfsh" ]; then
     check_pivnet_cli
     check_tanzu_token
-    create_workspace_directories
+    create_directories
     download_gemfire
     unpack_gemfire
 fi
