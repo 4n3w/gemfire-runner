@@ -3,7 +3,6 @@
 source common.bash
 
 # Configuration variables
-GEMFIRE_HOME=${GEMFIRE_HOME:-"/path/to/gemfire"}
 INSTANCE_NAME=${1:-"gemfire1"}
 CACHE_SERVER_PORT=${2:-"40404"}
 
