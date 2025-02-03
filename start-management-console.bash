@@ -9,7 +9,6 @@ LOG_DIR="./logs"
 WORKING_DIR="./data"
 
 # Console specific configuration
-CONSOLE_JAR="$GEMFIRE_MANAGEMENT_CONSOLE_PATH/gemfire-management-console-1.3.0.jar"
 JAVA_MIN_HEAP="512m"
 JAVA_MAX_HEAP="1024m"
 JAVA_OPTS=""
