@@ -115,7 +115,6 @@ start_gemfire() {
     # Start locator
     gfsh start locator \
         --name="$INSTANCE_NAME-locator" \
-        --cluster="cluster1" \
         --port=$LOCATOR_PORT \
         --dir="$WORKING_DIR" \
         --J=-Xmx$HEAP_SIZE \
@@ -147,7 +146,6 @@ start_gemfire() {
     # Start cache server
     gfsh start server \
         --name="$INSTANCE_NAME-server" \
-        --cluster="cluster1" \
         --server-port=$CACHE_SERVER_PORT \
         --dir="$WORKING_DIR" \
         --J=-Xmx$HEAP_SIZE \
