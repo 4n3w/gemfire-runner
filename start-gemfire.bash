@@ -2,10 +2,6 @@
 
 source common.bash
 
-# Configuration variables
-INSTANCE_NAME=${1:-"gemfire1"}
-CACHE_SERVER_PORT=${2:-"40404"}
-
 MAX_WAIT_TIME=60  # Maximum time to wait for services in seconds
 CHECK_INTERVAL=2  # Time between checks in seconds
 
