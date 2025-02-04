@@ -115,12 +115,20 @@ start_gemfire() {
     # Start locator
     gfsh start locator \
         --name="$INSTANCE_NAME-locator" \
+        --cluster="cluster1" \
         --port=$LOCATOR_PORT \
         --dir="$WORKING_DIR" \
         --J=-Xmx$HEAP_SIZE \
         --J=-Xms$HEAP_SIZE \
+        --J=-Dgemfire.enable-metrics=true \
+        --J=-Dgemfire.metrics-publication-enabled=true \
+        --J=-Dgemfire.http-service-port=7070 \
         --J=-Dgemfire.jmx-manager-port=$JMX_MANAGER_PORT \
         --J=-Dgemfire.http-service-port=$HTTP_SERVICE_PORT \
+        --J=-Dgemfire.prometheus.metrics.emission=All \
+        --J=-Dgemfire.prometheus.metrics.interval=2m \
+        --J=-Dgemfire.prometheus.metrics.host=127.0.0.1 \
+        --J=-Dgemfire.prometheus.metrics.port=9050 \
         --redirect-output \
         --log-level=config &
     
@@ -139,10 +147,20 @@ start_gemfire() {
     # Start cache server
     gfsh start server \
         --name="$INSTANCE_NAME-server" \
+        --cluster="cluster1" \
         --server-port=$CACHE_SERVER_PORT \
         --dir="$WORKING_DIR" \
         --J=-Xmx$HEAP_SIZE \
         --J=-Xms$HEAP_SIZE \
+        --J=-Dgemfire.enable-metrics=true \
+        --J=-Dgemfire.metrics-publication-enabled=true \
+        --J=-Dgemfire.http-service-port=7070 \
+        --J=-Dgemfire.jmx-manager-port=$JMX_MANAGER_PORT \
+        --J=-Dgemfire.http-service-port=$HTTP_SERVICE_PORT \
+        --J=-Dgemfire.prometheus.metrics.emission=All \
+        --J=-Dgemfire.prometheus.metrics.interval=2m \
+        --J=-Dgemfire.prometheus.metrics.host=127.0.0.1 \
+        --J=-Dgemfire.prometheus.metrics.port=9051 \
         --locators="localhost[$LOCATOR_PORT]" \
         --redirect-output \
         --log-level=config &

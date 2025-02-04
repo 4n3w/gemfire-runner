@@ -16,6 +16,10 @@ stop_existing_prom_graf() {
         echo "Stopping Grafana..."
         docker-compose stop grafana
     fi
+    
+    # Cleanup previous
+    echo "Cleaning up..."
+    docker-compose down -v
 }
 
 # Function to create prometheus and grafana working dir
@@ -43,7 +47,7 @@ create_docker_compose_file() {
 	    ports:
 	      - "3000:3000"
 	    environment:
-	      - GF_SECURITY_ADMIN_PASSWORD=secret
+	      - GF_SECURITY_ADMIN_PASSWORD=secret123
 	EOF
 }
 
@@ -52,11 +56,25 @@ create_prom_config_file() {
 	cat <<-EOF > prometheus.yml
 	global:
 	  scrape_interval: 15s
-
 	scrape_configs:
 	  - job_name: 'prometheus'
 	    static_configs:
 	      - targets: ['localhost:9090']
+	  - job_name: 'gemfire_cluster'
+	    metrics_path: '/metrics'
+	    honor_labels: true
+	    scheme: http
+	    params:
+	      format: ['prometheus']
+	    scrape_timeout: 10s
+	    fallback_scrape_protocol: 'PrometheusText0.0.4'
+	    static_configs:
+	      - targets: ['host.docker.internal:9050']
+	        labels:
+	          group: 'locators'
+	      - targets: ['host.docker.internal:9051']
+	        labels:
+	          group: 'servers'
 	EOF
 }
 
@@ -81,21 +99,6 @@ run_docker_compose() {
     fi
     docker-compose up -d
 }
-
-
-
-## Function to cleanup on script interruption
-#cleanup() {
-#    RC=$?
-#    if [ -f "$GEMFIRE_TAR" ]; then
-#        echo "Cleaning up downloaded tar file..."
-#        rm -rf "$GEMFIRE_TAR"
-#    fi
-#    exit $RC
-#}
-
-## Set trap for cleanup
-#trap cleanup SIGINT SIGTERM EXIT
 
 # Main execution
 create_pg_working_dir

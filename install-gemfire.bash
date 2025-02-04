@@ -12,7 +12,7 @@ download_gemfire() {
 
 # Function to unpack GemFire tarball
 unpack_gemfire() {
-    tar -xzvf "$GEMFIRE_TAR" -C "$GEMFIRE_PATH"
+    tar -xzf "$GEMFIRE_TAR" -C "$GEMFIRE_PATH"
     if [ $? -ne 0 ]; then
         echo "Problem unpacking gemfire .tgz file"
         exit 1
