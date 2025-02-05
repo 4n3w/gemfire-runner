@@ -6,6 +6,8 @@ GEMFIRE_TAR="$GEMFIRE_PATH/vmware-gemfire-10.1.2.tgz"
 CONSOLE_JAR="$GEMFIRE_PATH/gemfire-management-console-1.3.0.jar"
 export PATH=$GEMFIRE_HOME/bin:$PATH
 
+CLUSTER_ID="42"
+
 LOCATOR_PORT="10334"
 JMX_MANAGER_PORT="1099"
 HTTP_SERVICE_PORT="7070"
@@ -19,7 +21,6 @@ PG_WORKING_DIR="./data/pg"
 
 MAX_WAIT=10  # Maximum seconds to wait for graceful shutdown
 
-source dashboard_config.bash
 # Function to check if pivnet CLI is installed
 check_pivnet_cli() {
     if ! command -v pivnet &> /dev/null; then

@@ -119,6 +119,7 @@ start_gemfire() {
         --dir="$WORKING_DIR" \
         --J=-Xmx$HEAP_SIZE \
         --J=-Xms$HEAP_SIZE \
+        --J=-Dgemfire.distributed-system-id=${CLUSTER_ID} \
         --J=-Dgemfire.enable-metrics=true \
         --J=-Dgemfire.metrics-publication-enabled=true \
         --J=-Dgemfire.http-service-port=7070 \
@@ -150,6 +151,7 @@ start_gemfire() {
         --dir="$WORKING_DIR" \
         --J=-Xmx$HEAP_SIZE \
         --J=-Xms$HEAP_SIZE \
+        --J=-Dgemfire.distributed-system-id=${CLUSTER_ID} \
         --J=-Dgemfire.enable-metrics=true \
         --J=-Dgemfire.metrics-publication-enabled=true \
         --J=-Dgemfire.http-service-port=7070 \

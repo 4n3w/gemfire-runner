@@ -53,9 +53,6 @@ create_docker_compose_file() {
 	    container_name: grafana
 	    ports:
 	      - "3000:3000"
-	    volumes:
-	      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
-	      - ./grafana/dashboards:/var/lib/grafana/dashboards
 	    environment:
 	      - GF_SECURITY_ADMIN_PASSWORD=secret123
 	EOF
@@ -85,24 +82,6 @@ create_prom_config_file() {
 	      - targets: ['host.docker.internal:9051']
 	        labels:
 	          group: 'servers'
-	EOF
-}
-
-# Function to create grafana dashboard config file that points to custom dashboards
-create_graf_dashboard_file() {
-	cat <<-EOF > grafana/dashboard.yaml
-	apiVersion: 1
-	
-	providers:
-	  - name: "GemFire Dashboard"
-	    orgId: 1
-	    type: file
-	    disableDeletion: false
-	    updateIntervalSeconds: 10
-	    allowUiUpdates: false
-	    options:
-	      path: /var/lib/grafana/dashboards
-	      foldersFromFilesStructure: true
 	EOF
 }
 
@@ -140,7 +119,6 @@ pushd "$PG_WORKING_DIR" > /dev/null
 stop_existing_prom_graf
 create_docker_compose_file
 create_prom_config_file
-create_graf_dashboard
 run_docker_compose
 popd > /dev/null
 
