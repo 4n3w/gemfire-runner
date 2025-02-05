@@ -23,10 +23,17 @@ stop_existing_prom_graf() {
 }
 
 # Function to create prometheus and grafana working dir
-create_pg_working_dir() {
+create_pg_dirs() {
     if [ ! -d "$PG_WORKING_DIR" ]; then
         mkdir -p "$PG_WORKING_DIR"
     fi
+
+    for DIR in "grafana" "grafana/dashboards" "prometheus"; do
+        if [ ! -d "${PG_WORKING_DIR}/${DIR}" ]; then
+            mkdir -p "${PG_WORKING_DIR}/${DIR}"
+        fi
+    done
+
 }
 
 # Function to create docker compose file
@@ -38,7 +45,7 @@ create_docker_compose_file() {
 	    image: prom/prometheus:latest
 	    container_name: prometheus
 	    volumes:
-	      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+	      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
 	    ports:
 	      - "9090:9090"
 	  grafana:
@@ -46,6 +53,9 @@ create_docker_compose_file() {
 	    container_name: grafana
 	    ports:
 	      - "3000:3000"
+	    volumes:
+	      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
+	      - ./grafana/dashboards:/var/lib/grafana/dashboards
 	    environment:
 	      - GF_SECURITY_ADMIN_PASSWORD=secret123
 	EOF
@@ -53,7 +63,7 @@ create_docker_compose_file() {
 
 # Function to create prometheus.yml file
 create_prom_config_file() {
-	cat <<-EOF > prometheus.yml
+	cat <<-EOF > prometheus/prometheus.yml
 	global:
 	  scrape_interval: 15s
 	scrape_configs:
@@ -76,6 +86,30 @@ create_prom_config_file() {
 	        labels:
 	          group: 'servers'
 	EOF
+}
+
+# Function to create grafana dashboard config file that points to custom dashboards
+create_graf_dashboard_file() {
+	cat <<-EOF > grafana/dashboard.yaml
+	apiVersion: 1
+	
+	providers:
+	  - name: "GemFire Dashboard"
+	    orgId: 1
+	    type: file
+	    disableDeletion: false
+	    updateIntervalSeconds: 10
+	    allowUiUpdates: false
+	    options:
+	      path: /var/lib/grafana/dashboards
+	      foldersFromFilesStructure: true
+	EOF
+}
+
+# Function to call all of the grafana dashboard functions
+create_graf_dashboard() {
+    create_graf_dashboard_file
+    create_graf_dashboard_json
 }
 
 # Function to run docker compose
@@ -101,11 +135,12 @@ run_docker_compose() {
 }
 
 # Main execution
-create_pg_working_dir
+create_pg_dirs
 pushd "$PG_WORKING_DIR" > /dev/null
 stop_existing_prom_graf
 create_docker_compose_file
 create_prom_config_file
+create_graf_dashboard
 run_docker_compose
 popd > /dev/null
 

@@ -19,6 +19,7 @@ PG_WORKING_DIR="./data/pg"
 
 MAX_WAIT=10  # Maximum seconds to wait for graceful shutdown
 
+source dashboard_config.bash
 # Function to check if pivnet CLI is installed
 check_pivnet_cli() {
     if ! command -v pivnet &> /dev/null; then
