@@ -4,5 +4,6 @@
 ### Python Setup
 
     python -m venv venv
-    source venv/bin/activate  # or venv\Scripts\activate on Windows
+    source venv/bin/activate
     pip install -r requirements.txt
+    python ...

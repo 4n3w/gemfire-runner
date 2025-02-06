@@ -129,6 +129,10 @@ start_gemfire() {
         --J=-Dgemfire.prometheus.metrics.interval=2m \
         --J=-Dgemfire.prometheus.metrics.host=127.0.0.1 \
         --J=-Dgemfire.prometheus.metrics.port=9050 \
+        --J=-Dgemfire.enable-system-statistics=true \
+        --J=-Dgemfire.enable-time-statistics=true \
+        --J=-Dgemfire.metrics.logback.enabled=true \
+        --J=-Dgemfire.metrics.jvm.enabled=true \
         --redirect-output \
         --log-level=config &
     
@@ -161,6 +165,15 @@ start_gemfire() {
         --J=-Dgemfire.prometheus.metrics.interval=2m \
         --J=-Dgemfire.prometheus.metrics.host=127.0.0.1 \
         --J=-Dgemfire.prometheus.metrics.port=9051 \
+        --J=-Dgemfire.enable-system-statistics=true \
+        --J=-Dgemfire.metrics.logback.enabled=true \
+        --J=-Dgemfire.metrics.jvm.enabled=true \
+        --J=-Dgemfire.statistic.enable-statistics=true \
+        --J=-Dgemfire.statistic.archive-file=stats.gfs \
+        --J=-Dgemfire.statistic.sample-rate=1000 \
+        --J=-Dgemfire.enable-time-statistics=true \
+        --J=-Dgemfire.statistic-sampling-enabled=true \
+        --J=-Dmicrometer.metrics.logback.enabled=true \
         --locators="localhost[$LOCATOR_PORT]" \
         --redirect-output \
         --log-level=config &
