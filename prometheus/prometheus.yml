@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 15s
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+  - job_name: 'gemfire_cluster'
+    metrics_path: '/metrics'
+    honor_labels: true
+    scheme: http
+    params:
+      format: ['prometheus']
+    scrape_timeout: 10s
+    fallback_scrape_protocol: 'PrometheusText0.0.4'
+    static_configs:
+      - targets: ['host.docker.internal:9050']
+        labels:
+          group: 'locators'
+      - targets: ['host.docker.internal:9051']
+        labels:
+          group: 'servers'

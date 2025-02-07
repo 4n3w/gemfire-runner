@@ -119,7 +119,7 @@ pushd "$PG_WORKING_DIR" > /dev/null
 stop_existing_prom_graf
 create_docker_compose_file
 create_prom_config_file
-run_docker_compose
+#run_docker_compose
 popd > /dev/null
 
 exit 0
