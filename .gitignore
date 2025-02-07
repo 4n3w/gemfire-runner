@@ -2,4 +2,5 @@ logs
 data
 .idea
 VMware_GemFire_Management_Console
+venv
 start-server.gf
