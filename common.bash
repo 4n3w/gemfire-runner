@@ -11,15 +11,16 @@ CLUSTER_ID="42"
 LOCATOR_PORT="10334"
 JMX_MANAGER_PORT="1099"
 HTTP_SERVICE_PORT="7070"
-INSTANCE_NAME="gemfire1"
+CACHE_SERVER_PORT="40404"
 
+INSTANCE_NAME="gemfire1"
 HEAP_SIZE="1G"
 
 LOG_DIR="./logs"
 WORKING_DIR="./data"
 PG_WORKING_DIR="./data/pg"
 
-MAX_WAIT=10  # Maximum seconds to wait for graceful shutdown
+MAX_WAIT=10
 
 # Function to check if pivnet CLI is installed
 check_pivnet_cli() {
