@@ -8,12 +8,16 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
       - "9090:9090"
+    expose:
+      - 9090
     networks: [gemfire-cluster-networks]
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
       - "3000:3000"
+    expose:
+      - 3000
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=secret123
     networks: [gemfire-cluster-networks]
@@ -34,6 +38,7 @@ services:
         --J=-Dgemfire.prometheus.metrics.emission=All
         --J=-Dgemfire.prometheus.metrics.interval=2m
         --J=-Dgemfire.prometheus.metrics.host=127.0.0.1
+        --J=-Dgemfire.prometheus.metrics.host=0.0.0.0
         --J=-Dgemfire.prometheus.metrics.port=9050
         --J=-Dgemfire.enable-system-statistics=true
         --J=-Dgemfire.enable-time-statistics=true
@@ -47,10 +52,12 @@ services:
       - "10334:10334"
       - "7070:7070"
       - "1099:1099"
+      - "9050:9050"
     expose:
       - 10334
       - 7070
       - 1099
+      - 9050
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7070/management/v1/members/locator-0"]
       interval: 30s
@@ -80,7 +87,7 @@ services:
         --J=-Dgemfire.http-service-port=7070
         --J=-Dgemfire.prometheus.metrics.emission=All
         --J=-Dgemfire.prometheus.metrics.interval=2m
-        --J=-Dgemfire.prometheus.metrics.host=127.0.0.1
+        --J=-Dgemfire.prometheus.metrics.host=0.0.0.0
         --J=-Dgemfire.prometheus.metrics.port=9051
         --J=-Dgemfire.enable-system-statistics=true
         --J=-Dgemfire.metrics.logback.enabled=true
@@ -99,6 +106,9 @@ services:
     ports:
       - "7071:7070"
       - "40405:40405"
+      - "9051:9051"
+    expose:
+      - 9051
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:7070/gemfire-api/v1/ping"]
       interval: 5s
@@ -123,6 +133,25 @@ services:
     links:
       - gemfire-locator-0
     networks: [gemfire-cluster-networks]
+  bootstrap-grafana:
+    profiles: ["manual"]
+    networks:
+      - gemfire-cluster-networks
+    image: python:3.9-slim
+    command: >
+      sh -c "
+        pip install -r /app/requirements.txt &&
+        python /app/generate_grafana_service_key.py | tee /tmp/api_key &&
+        API_KEY=$$(cat /tmp/api_key | grep 'API key:' | cut -f3 -d ' ') &&
+        echo $$API_KEY &&
+        python /app/add_prometheus_to_grafana.py $$API_KEY &&
+        python /app/add_dashboard_to_grafana.py $$API_KEY /app/dashboards/dashboard.json
+      "
+    volumes:
+      - ./grafana/dashboards/dashboard.json:/app/dashboards/dashboard.json
+      - ./python:/app
+    working_dir: /app
 networks:
   gemfire-cluster-networks:
     driver: bridge
+

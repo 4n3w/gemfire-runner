@@ -216,7 +216,7 @@ def setup_grafana_prometheus(
 
 if __name__ == "__main__":
     # Configuration
-    GRAFANA_URL = "http://localhost:3000"
+    GRAFANA_URL = "http://grafana:3000"
     PROMETHEUS_URL = "http://prometheus:9090"
     ADMIN_USER = "admin"
     ADMIN_PASSWORD = "secret123"  # Change this to your admin password

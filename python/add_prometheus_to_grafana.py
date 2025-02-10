@@ -77,7 +77,7 @@ def manage_prometheus_datasource(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Add or update Prometheus datasource in Grafana')
     parser.add_argument('api_key', help='Grafana API key')
-    parser.add_argument('--grafana-url', default='http://localhost:3000', help='Grafana URL (default: http://localhost:3000)')
+    parser.add_argument('--grafana-url', default='http://grafana:3000', help='Grafana URL (default: http://localhost:3000)')
     parser.add_argument('--prometheus-url', default='http://prometheus:9090', help='Prometheus URL (default: http://prometheus:9090)')
     parser.add_argument('--name', default='prometheus', help='Datasource name (default: Prometheus)')
     parser.add_argument('--default', action='store_true', help='Set as default datasource')

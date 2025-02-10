@@ -147,8 +147,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Import dashboard to Grafana')
     parser.add_argument('api_key', help='Grafana API key')
     parser.add_argument('dashboard_file', help='Path to dashboard JSON file')
-    parser.add_argument('--grafana-url', default='http://localhost:3000',
-                       help='Grafana URL (default: http://localhost:3000)')
+    parser.add_argument('--grafana-url', default='http://grafana:3000',
+                       help='Grafana URL (default: http://grafana:3000)')
     parser.add_argument('--folder-id', type=int, default=0,
                        help='Folder ID to import to (default: 0 for General)')
     parser.add_argument('--no-overwrite', action='store_false', dest='overwrite',

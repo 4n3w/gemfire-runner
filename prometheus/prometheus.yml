@@ -13,9 +13,9 @@ scrape_configs:
     scrape_timeout: 10s
     fallback_scrape_protocol: 'PrometheusText0.0.4'
     static_configs:
-      - targets: ['host.docker.internal:9050']
+      - targets: ['gemfire-locator-0:9050']
         labels:
           group: 'locators'
-      - targets: ['host.docker.internal:9051']
+      - targets: ['gemfire-server-0:9051']
         labels:
           group: 'servers'
