@@ -4,3 +4,6 @@ data
 VMware_GemFire_Management_Console
 venv
 start-server.gf
+python/dashboards
+python/grafana
+grafana/api_key

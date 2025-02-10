@@ -141,8 +141,8 @@ services:
     command: >
       sh -c "
         pip install -r /app/requirements.txt &&
-        python /app/generate_grafana_service_key.py | tee /tmp/api_key &&
-        API_KEY=$$(cat /tmp/api_key | grep 'API key:' | cut -f3 -d ' ') &&
+        python /app/generate_grafana_service_key.py | tee /app/grafana/api_key &&
+        API_KEY=$$(cat /app/grafana/api_key | grep 'API key:' | cut -f3 -d ' ') &&
         echo $$API_KEY &&
         python /app/add_prometheus_to_grafana.py $$API_KEY &&
         python /app/add_dashboard_to_grafana.py $$API_KEY /app/dashboards/dashboard.json
@@ -150,6 +150,7 @@ services:
     volumes:
       - ./grafana/dashboards/dashboard.json:/app/dashboards/dashboard.json
       - ./python:/app
+      - ./grafana:/app/grafana
     working_dir: /app
 networks:
   gemfire-cluster-networks:
