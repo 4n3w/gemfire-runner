@@ -1,0 +1,17 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: k6
+    orgId: 1
+
+datasources:
+  - name: k6
+    type: influxdb
+    access: proxy
+    orgId: 1
+    url: http://influxdb:8086
+    database: k6
+    isDefault: true
+    version: 1
+    editable: true
+    timeInterval: "5s"
