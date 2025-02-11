@@ -19,7 +19,16 @@ services:
     expose:
       - 3000
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=secret123
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+    depends_on:
+      - prometheus
     networks: [gemfire-cluster-networks]
   gemfire-locator-0:
     image: gemfire/gemfire-all:10.1-jdk17
@@ -133,26 +142,9 @@ services:
     links:
       - gemfire-locator-0
     networks: [gemfire-cluster-networks]
-  bootstrap-grafana:
-    profiles: ["manual"]
-    networks:
-      - gemfire-cluster-networks
-    image: python:3.9-slim
-    command: >
-      sh -c "
-        pip install -r /app/requirements.txt &&
-        python /app/generate_grafana_service_key.py | tee /app/grafana/api_key &&
-        API_KEY=$$(cat /app/grafana/api_key | grep 'API key:' | cut -f3 -d ' ') &&
-        echo $$API_KEY &&
-        python /app/add_prometheus_to_grafana.py $$API_KEY &&
-        python /app/add_dashboard_to_grafana.py $$API_KEY /app/dashboards/dashboard.json
-      "
-    volumes:
-      - ./grafana/dashboards/dashboard.json:/app/dashboards/dashboard.json
-      - ./python:/app
-      - ./grafana:/app/grafana
-    working_dir: /app
 networks:
   gemfire-cluster-networks:
     driver: bridge
-
+volumes:
+  influxdb-data:
+  grafana-data:

@@ -18,7 +18,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "fec9afnj9dudce"
+          "uid": "Prometheus"
         },
         "enable": true,
         "expr": "resets(process_uptime_seconds{cluster=\"$cluster_id\",member=\"$member\"}[1m]) > 0",
@@ -56,7 +56,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -119,7 +119,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_process_uptime_seconds{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -139,7 +139,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -208,7 +208,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_used_bytes{member=\"$member\", area=\"heap\"})*100/sum(gemfire_jvm_memory_max_bytes{member=\"$member\", area=\"heap\"})",
@@ -226,7 +226,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -305,7 +305,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_used_bytes{member=\"$member\", area=\"nonheap\"})*100/sum(gemfire_jvm_memory_max_bytes{member=\"$member\", area=\"nonheap\"})",
@@ -336,7 +336,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -419,7 +419,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_cache_entries{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -432,7 +432,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_cache_entries{cluster=\"$cluster_id\",member=\"$member\"})",
           "format": "time_series",
@@ -447,7 +447,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "description": "# of Regions on the specified cluster and server",
       "fieldConfig": {
@@ -510,7 +510,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "count(gemfire_cache_entries{cluster=\"$cluster_id\",member=\"$member\", region=~\".*\"})",
           "format": "time_series",
@@ -525,7 +525,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "description": "% of Regions on the specified cluster and server with persistence",
       "fieldConfig": {
@@ -588,7 +588,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "count(member_region_entries{cluster=\"$cluster_id\",member=\"$member\", data_policy=~\".*PERSISTENT.*\"})",
           "format": "time_series",
@@ -617,7 +617,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -700,7 +700,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "gemfire_function_executions_seconds_count{function=~\".*internal.*\",succeeded=\"true\",member=\"$member\",cluster=\"$cluster_id\"}",
           "format": "time_series",
@@ -712,7 +712,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "gemfire_function_executions_seconds_count{member=\"$member\",cluster=\"$cluster_id\",function!~\".*internal.*\",succeeded=\"true\"}",
           "format": "time_series",
@@ -727,7 +727,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "description": "Table of different function executions for the selected member and cluster.",
       "fieldConfig": {
@@ -803,7 +803,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\"})",
           "format": "time_series",
@@ -814,7 +814,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\",function=~\".*internal.*\"})",
           "format": "time_series",
@@ -826,7 +826,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\",function!~\".*internal.*\"})",
           "format": "time_series",
@@ -839,7 +839,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\",function!~\".*internal.*\",succeeded=\"true\"})",
           "format": "time_series",
@@ -850,7 +850,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\",function!~\".*internal.*\",succeeded=\"false\"})",
           "format": "time_series",
@@ -861,7 +861,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\",function=~\".*internal.*\",succeeded=\"true\"})",
           "format": "time_series",
@@ -872,7 +872,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "sum(gemfire_function_executions_seconds_count{cluster=\"$cluster_id\",member=\"$member\",function=~\".*internal.*\",succeeded=\"false\"})",
           "format": "time_series",
@@ -887,7 +887,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "description": "Latency measurement for successful function executions by function, for selected member and cluster.",
       "fieldConfig": {
@@ -971,7 +971,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "rate(gemfire_function_executions_seconds_sum{succeeded=\"true\",cluster=\"$cluster_id\",member=\"$member\"}[10s])/rate(gemfire_function_executions_seconds_count{succeeded=\"true\",cluster=\"$cluster_id\",member=\"$member\"}[10s])",
@@ -988,7 +988,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "description": "Latency measurement for successful function executions by function, for selected member and cluster.",
       "fieldConfig": {
@@ -1072,7 +1072,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "rate(gemfire_function_executions_seconds_count{succeeded=\"true\",cluster=\"$cluster_id\",member=\"$member\"}[10s])",
           "format": "time_series",
@@ -1100,7 +1100,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1187,7 +1187,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_used_bytes{member=\"$member\", area=\"heap\"})",
@@ -1202,7 +1202,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_committed_bytes{member=\"$member\", area=\"heap\"})",
@@ -1216,7 +1216,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_max_bytes{member=\"$member\", area=\"heap\"})",
@@ -1234,7 +1234,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1321,7 +1321,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_used_bytes{member=\"$member\", area=\"nonheap\"})",
@@ -1337,7 +1337,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_committed_bytes{member=\"$member\", area=\"nonheap\"})",
@@ -1351,7 +1351,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_max_bytes{member=\"$member\", area=\"nonheap\"})",
@@ -1369,7 +1369,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1456,7 +1456,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_used_bytes{cluster=\"$cluster_id\",member=\"$member\"})",
@@ -1471,7 +1471,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_committed_bytes{cluster=\"$cluster_id\",member=\"$member\"})",
@@ -1485,7 +1485,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(gemfire_jvm_memory_max_bytes{cluster=\"$cluster_id\",member=\"$member\"})",
@@ -1503,7 +1503,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1590,7 +1590,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_memory_vss_bytes{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1606,7 +1606,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_memory_rss_bytes{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1619,7 +1619,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_memory_pss_bytes{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1632,7 +1632,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_memory_swap_bytes{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1645,7 +1645,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "process_memory_swappss_bytes{cluster=\"$cluster_id\",member=\"$member\"}",
           "format": "time_series",
@@ -1656,7 +1656,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "process_memory_pss_bytes{cluster=\"$cluster_id\",member=\"$member\"} + process_memory_swap_bytes{cluster=\"$cluster_id\",member=\"$member\"}",
           "format": "time_series",
@@ -1684,7 +1684,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1773,7 +1773,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_system_cpu_usage{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1789,7 +1789,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_process_cpu_usage{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1803,7 +1803,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "avg_over_time(gemfire_process_cpu_usage{cluster=\"$cluster_id\",member=\"$member\"}[1h])",
@@ -1821,7 +1821,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -1909,7 +1909,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_system_load_average_1m{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1924,7 +1924,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_system_cpu_count{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -1941,7 +1941,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2029,7 +2029,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_threads_live{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_jvm_threads_live_threads{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2044,7 +2044,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_threads_daemon{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_jvm_threads_daemon_threads{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2059,7 +2059,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_threads_peak{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_jvm_threads_peak_threads{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2073,7 +2073,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_threads{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_jvm_threads_live_threads{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2092,7 +2092,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2269,7 +2269,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_threads_states_threads{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2286,7 +2286,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2450,7 +2450,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "increase(logback_events_total{cluster=\"$cluster_id\",member=\"$member\"}[1m])",
@@ -2470,7 +2470,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2559,7 +2559,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "process_open_fds{cluster=\"$cluster_id\",member=\"$member\"}",
           "format": "time_series",
@@ -2573,7 +2573,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "expr": "process_max_fds{cluster=\"$cluster_id\",member=\"$member\"}",
           "format": "time_series",
@@ -2587,7 +2587,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_files_open{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_process_files_open_files{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2600,7 +2600,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "process_files_max{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_process_files_max_files{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -2631,7 +2631,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2720,7 +2720,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_memory_used_bytes{member=\"$member\", id=~\"$jvm_memory_pool_heap\"}",
@@ -2737,7 +2737,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_memory_committed_bytes{member=\"$member\", id=~\"$jvm_memory_pool_heap\"}",
@@ -2754,7 +2754,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_memory_max_bytes{member=\"$member\", id=~\"$jvm_memory_pool_heap\"}",
@@ -2788,7 +2788,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -2877,7 +2877,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_memory_used_bytes{member=\"$member\", id=~\"$jvm_memory_pool_nonheap\"}",
@@ -2894,7 +2894,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_memory_committed_bytes{member=\"$member\", id=~\"$jvm_memory_pool_nonheap\"}",
@@ -2911,7 +2911,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_memory_max_bytes{member=\"$member\", id=~\"$jvm_memory_pool_nonheap\"}",
@@ -2945,7 +2945,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3029,7 +3029,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "rate(gemfire_jvm_gc_pause_seconds_count{cluster=\"$cluster_id\",member=\"$member\"}[1m])",
@@ -3047,7 +3047,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3131,7 +3131,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "rate(gemfire_jvm_gc_pause_seconds_sum{cluster=\"$cluster_id\",member=\"$member\"}[1m])/rate(gemfire_jvm_gc_pause_seconds_count{cluster=\"$cluster_id\",member=\"$member\"}[1m])",
@@ -3145,7 +3145,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_gc_pause_seconds_max{cluster=\"$cluster_id\",member=\"$member\"}",
@@ -3163,7 +3163,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3247,7 +3247,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "rate(gemfire_jvm_gc_memory_allocated_bytes_total{cluster=\"$cluster_id\",member=\"$member\"}[1m])",
@@ -3261,7 +3261,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "rate(gemfire_jvm_gc_memory_promoted_bytes_total{cluster=\"$cluster_id\",member=\"$member\"}[1m])",
@@ -3292,7 +3292,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3376,7 +3376,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "jvm_classes_loaded{cluster=\"$cluster_id\",member=\"$member\"} or jvm_classes_loaded_classes{cluster=\"$cluster_id\",member=\"$member\"} or gemfire_loadedClasses{job=\"gemfire_cluster\"}",
@@ -3395,7 +3395,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3503,7 +3503,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "delta(jvm_classes_loaded{application=\"$application\",instance=\"$instance\"}[5m]) or delta(jvm_classes_loaded_classes{application=\"$application\",instance=\"$instance\"}[5m]) or delta(gemfire_loadedClasses{job=\"gemfire_cluster\", member=~\".*$member.*\"}[5m])",
@@ -3537,7 +3537,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3621,7 +3621,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_buffer_memory_used_bytes{member=\"$member\", id=\"direct\"}",
@@ -3636,7 +3636,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_buffer_total_capacity_bytes{member=\"$member\", id=\"direct\"}",
@@ -3655,7 +3655,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3740,7 +3740,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "jvm_buffer_count{member=\"$member\", id=\"direct\"} or gemfire_jvm_buffer_count_buffers{member=\"$member\", id=\"direct\"}",
@@ -3759,7 +3759,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3843,7 +3843,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_buffer_memory_used_bytes{member=\"$member\", id=\"mapped\"} or jvm_buffer_memory_used_bytes{member=\"$member\", id=\"mapped\"}",
@@ -3858,7 +3858,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "gemfire_jvm_buffer_total_capacity_bytes{member=\"$member\", id=\"mapped\"} or jvm_buffer_total_capacity_bytes{member=\"$member\", id=\"mapped\"}",
@@ -3877,7 +3877,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "fec9afnj9dudce"
+        "uid": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -3962,7 +3962,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "fec9afnj9dudce"
+            "uid": "Prometheus"
           },
           "editorMode": "code",
           "expr": "jvm_buffer_count{member_name=\"$member\", id=\"mapped\"} or gemfire_jvm_buffer_count_buffers{member_name=\"$member\", id=\"mapped\"}",
@@ -3992,7 +3992,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "fec9afnj9dudce"
+          "uid": "Prometheus"
         },
         "definition": "label_values(cluster)",
         "includeAll": false,
@@ -4012,7 +4012,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "fec9afnj9dudce"
+          "uid": "Prometheus"
         },
         "definition": "label_values(gemfire_jvm_buffer_count_buffers{cluster=\"$cluster_id\"},member)",
         "includeAll": false,
@@ -4036,7 +4036,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "fec9afnj9dudce"
+          "uid": "Prometheus"
         },
         "definition": "label_values(gemfire_jvm_memory_used_bytes{member=\"$member\", area=\"heap\"},id)",
         "includeAll": true,
@@ -4060,7 +4060,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "fec9afnj9dudce"
+          "uid": "Prometheus"
         },
         "definition": "label_values(gemfire_jvm_memory_used_bytes{member=\"$member\", area=\"nonheap\"},id)",
         "includeAll": true,
